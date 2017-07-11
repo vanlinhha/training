@@ -32,5 +32,6 @@
     'demo': [
         'demo/demo.xml',
     ],
+	# load pos.xml
     'qweb': ['static/src/xml/pos.xml'],
 }
