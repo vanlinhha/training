@@ -18,7 +18,7 @@
             </div>
             <div class="product-name">
                 <t t-esc="product.display_name"/> - Qty: 
-                <t t-esc='product.quantity'/>
+                <t t-esc='product.count_sell'/>
             </div>
         </span>
     </t>
