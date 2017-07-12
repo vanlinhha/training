@@ -4,7 +4,7 @@ from odoo import api, fields, models, _
 from random import randint
 
 class ProductTemplate(models.Model):
-    _inherit = 'product.template'
+    _inherits = {'product.template', 'res.partner'} 
 
     #count_sell value. Add for sort POS Product by this value.
     count_sell = fields.Integer(string="Count sell item", store=True, compute='_rand_count_count')
