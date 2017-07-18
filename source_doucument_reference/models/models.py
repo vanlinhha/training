@@ -2,7 +2,7 @@
 
 from odoo import models, fields, api
 
-class aaa(models.Model):
+class source_doucument_reference(models.Model):
     _inherit = 'account.invoice'
 
     origin2 = fields.Many2one('sale.order', compute='_origin_compute', string="Source Document", readonly="True")
@@ -12,4 +12,3 @@ class aaa(models.Model):
         for item in self:
             order_id = item.origin
             item.origin2 = item.env['sale.order'].search([('name', '=', order_id)])
-
