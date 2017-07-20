@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 
 
-#SLACK_TOKEN = 'xoxp-3404732958-164746636839-213505901088-723c7ceb1ec4d2e58923111683253a3b'
+#SLACK_TOKEN = 'SLACK_API_HERE'
 
 class OrderLunch(models.Model):
 	_name = 'order.lunch'
