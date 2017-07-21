@@ -1,0 +1,68 @@
+#!/usr/bin/env python
+from datetime import datetime
+import re
+import os
+from munin import MuninPlugin
+
+CONST_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+# Model be monitor
+MODULE = "res.partner"
+# Read time response before 5 minute
+DELAY_MINUTE = 5
+# Time response of model in 1 minute
+TIME_RES = 1
+
+
+class OdooTimeResponse(MuninPlugin):
+    title = "Odoo Time Response"
+    args = "--base 1000 -l 0"
+    vlabel = "time_response"
+    scale = False
+    category = "odoo"
+
+    @property
+    def fields(self):
+        warning = os.environ.get('time_warn', 10)
+        critical = os.environ.get('time_crit', 120)
+        return [("time_response", dict(
+                label="Time response",
+                info=' Time to response module.',
+                type="GAUGE",
+                min="0",
+                warning=str(warning),
+                critical=str(critical)))]
+
+    def execute(self):
+        check = False
+        default_time = 0
+        if os.path.exists("/opt/odoo/odoo-10.0/odoo.log"):
+            check = True
+        if check:
+            res = re.compile("odoo\.http\.rpc\.response")
+#           req = re.compile("odoo\.http\.rpc\.request")
+            mod = re.compile(MODULE)
+            file_lines = open("/opt/odoo/odoo-10.0/odoo.log", "r")
+            log_lines = []
+            for file_line in file_lines:
+                if (res.search(file_line) > -1) and mod.search(file_line):
+                    log_lines.append(file_line)
+            log_lines.reverse()
+            for log_line in log_lines:
+                time_line = log_line.strip(' ').split(',')
+                if len(time_line) >= 2:
+                    delay = datetime.now() - datetime.strptime(time_line[0], CONST_TIME_FORMAT)
+                    if delay.seconds > DELAY_MINUTE * 60:
+                        print "break"
+                        break
+                    else:
+                        if len(log_line.strip().split(":")) > 6:
+                            default_time += float(log_line.strip("").split(":")[6].split("s")[0])
+            """
+                :param time_response is content file log of server odoo 
+            """
+            return dict(time_response=default_time)
+        else:
+            return dict(time_response=default_time)
+
+if __name__ == "__main__":
+    OdooTimeResponse().run()
