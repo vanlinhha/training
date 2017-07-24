@@ -6,7 +6,7 @@
         Automatically send a email to users when they sign up successfully""",
 
     'description': """
-        Long description of module's purpose
+        To send user a email when they sign up successfully
     """,
 
     'author': "My Company",
