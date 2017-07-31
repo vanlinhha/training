@@ -17,7 +17,7 @@
                 <!--<field name="search_view_id" ref="view_email_server_search"/>-->
         </record>
 
-        <menuitem parent="base.menu_administration" id="email_server_setting" name="Email Server Setting" groups="group_manager"/>
+        <menuitem parent="base.menu_administration" id="email_server_setting" name="Email Server Setting"/>
 
         <menuitem
             parent="email_server_setting"
@@ -25,7 +25,7 @@
             action="action_email_server_tree"
             name="Incoming Mail Servers"
             sequence="14"
-            groups="group_manager"/>
+            />
 
         <menuitem
             id="menu_config"
@@ -33,7 +33,7 @@
             parent="email_server_setting"
             sequence="1"
             action="action_ir_mail_server_list"
-            groups="group_manager"/>
+            />
 
     </data>
 </odoo>
