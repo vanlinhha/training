@@ -1,0 +1,4 @@
+1. Thay đổi trong odoo.conf
+2. Thay đổi shared_buffer trong conf của postgresql len 512mb
+
+
