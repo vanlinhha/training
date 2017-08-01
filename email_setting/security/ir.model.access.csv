@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+email_outgoing_admin,email outgoing admin,base.model_ir_mail_server,group_manager,1,1,1,1
+email_incoming_admin,email incoming admin,fetchmail.model_fetchmail_server,group_manager,1,1,1,1
+

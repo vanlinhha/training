@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="action_ir_mail_server_list">
+            <field name="name">Outgoing Mail Server</field>
+            <field name="res_model">ir.mail_server</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_email_server_tree" model="ir.actions.act_window">
+                <field name="name">Incoming Mail Servers</field>
+                <field name="res_model">fetchmail.server</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form</field>
+                <!--<field name="view_id" ref="view_email_server_tree"/>-->
+                <!--<field name="search_view_id" ref="view_email_server_search"/>-->
+        </record>
+
+        <menuitem parent="base.menu_administration" id="email_server_setting" name="Email Server Setting" groups="group_manager"/>
+
+        <menuitem
+            parent="email_server_setting"
+            id="menu_action_fetchmail_server_tree"
+            action="action_email_server_tree"
+            name="Incoming Mail Servers"
+            sequence="14"
+            groups="group_manager"/>
+
+        <menuitem
+            id="menu_config"
+            name="Outgoing Mail Server"
+            parent="email_server_setting"
+            sequence="1"
+            action="action_ir_mail_server_list"
+            groups="group_manager"/>
+
+    </data>
+</odoo>
