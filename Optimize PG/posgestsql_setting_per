@@ -1,0 +1,11 @@
+
+Khi khởi động 1 PostgreSQL server thì nó được cấp phát cố định 1 lượng bộ nhớ thông qua các thông số dưới . Đó là tất cả lượng bộ nhớ dành cho tất cả truy cập thông tin trong database. Phân bổ lượng bộ nhớ được chia cho Connection ,AutoVacuum worker, Prepared transactions, Shared_buffers, WAL buffers( write header), Fixed space requirements 
+- shared_buffer: sử dụng bộ nhớ cho việc đọc ghi dữ liệu trong bộ nhớ đệm (perforomace: 128- 256)   [(block_size + 208) * shared_buffers]
+- wal_buffer: dành bộ nhớ cho viết header của các query	      (wal_block_size + 8) * wal_buffers  
+- autovacuum_max_workers: được tính như 1 connection          (1800 + 270 * max_locks_per_transaction) * autovacuum_max_workers 
+- max_connection: 					      (1800 + 270 * max_locks_per_transaction) * max_connections 
+- Fixed space requirements :   				      770 kB
+Các tham số non share memory 
+- work_mem:   lượng bộ nhớ dành cho riêng việc sắp xếp trong các query ko liên quan tới fillter =))
+- maintenance_work_mem: lượng bộ nhớ dành cho việc VACUUM, CREATE INDEX, and ALTER TABLE ADD FOREIGN KEY  
+
