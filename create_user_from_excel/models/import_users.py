@@ -248,7 +248,7 @@ class ImportUsers(models.TransientModel):
             if value == '' or str(value) == '0.0':
                 return {sel_group: False}
             # if column has valid value
-            if self.is_int_number(int(value)) and (value > 0 and value <= len(res_group_ids)):
+            if self.is_int_number(value) and (value > 0 and value <= len(res_group_ids)):
                 return {sel_group: int(res_group_ids[int(value) - 1])}
             else:
                 return 'Setting for %s has invalid value ; ' % name.title()
@@ -261,6 +261,7 @@ class ImportUsers(models.TransientModel):
 
     def is_int_number(self, value):
         try:
+            value = int(value)
             return isinstance(int(str(value)), int)
         except ValueError:
             return False
