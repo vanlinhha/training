@@ -17,18 +17,19 @@ class GetUser():
                 user.update({
                     'username': sheet1.cell(row, 0).value,
                     'email': sheet1.cell(row, 1).value,
-                    'contact_creation': sheet1.cell(row, 1).value,
-                    'home_action': sheet1.cell(row, 1).value,
-                    'sale': sheet1.cell(row, 1).value,
-                    'project': sheet1.cell(row, 1).value,
-                    'account': sheet1.cell(row, 1).value,
-                    'employee': sheet1.cell(row, 1).value,
-                    'timesheet': sheet1.cell(row, 1).value,
-                    'administrator': sheet1.cell(row, 1).value,
+                    'contact_creation': sheet1.cell(row, 2).value,
+                    'home_action': sheet1.cell(row, 3).value,
+                    'sale': sheet1.cell(row, 4).value,
+                    'project': sheet1.cell(row, 5).value,
+                    'account': sheet1.cell(row, 6).value,
+                    'employee': sheet1.cell(row, 7).value,
+                    'timesheet': sheet1.cell(row, 8).value,
+                    'administrator': sheet1.cell(row, 9).value,
                 })
             else:
                 user.update({
                     'errors': 'This line is wrong format;'
                 })
+            list_users.append(user)
 
         return list_users

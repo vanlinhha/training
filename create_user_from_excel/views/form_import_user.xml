@@ -23,7 +23,7 @@
 
                     <group states="choose">
                         <group>
-                            <h4>The sample xls format - fixed assets :
+                            <h4>The sample xls format for users file :
                                 <a href="/create_user_from_excel/static/src/data/sample_data.xls">
                                     <br/>
                                     sample_data.xls
