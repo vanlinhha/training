@@ -1,0 +1,14 @@
+<odoo>
+  <data>
+      <record id="wizard_lang_export_inherit" model="ir.ui.view">
+          <field name="name">Import Translation inherit</field>
+          <field name="model">base.language.export</field>
+          <field name="inherit_id" ref="base.wizard_lang_export"/>
+          <field name="arch" type="xml">
+              <field name="modules" position="after">
+                  <field name="export_all"/>
+              </field>
+          </field>
+      </record>
+  </data>
+</odoo>
