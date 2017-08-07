@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+user_view_project, User View Project,project.model_project_project,group_view_project,1,0,0,0
+user_view_task,User View Task,project.model_project_task,group_view_project,1,0,0,0
+task_type,Project task type,project.model_project_task_type,group_view_project,1,0,0,0
+project_type,Project task,project.model_project_tags,group_view_project,1,0,0,0
+account_analytic,Account analytic,project.model_account_analytic_account,group_view_project,1,0,0,0
+
+user_edit_project, User Edit Project,project.model_project_project,group_edit_project,1,1,1,0
+user_edit_task,User Edit Task,project.model_project_task,group_edit_project,1,1,1,0
+edit_task_type,Edit task type,project.model_project_task_type,group_edit_project,1,1,1,0
+edit_project_type,Edit project task,project.model_project_tags,group_edit_project,1,1,1,0
+account_analytic_edit,Account analytic edit,project.model_account_analytic_account,group_edit_project,1,1,1,0
