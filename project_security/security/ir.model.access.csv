@@ -1,12 +1,16 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-user_view_project, User View Project,project.model_project_project,group_view_project,1,0,0,0
-user_view_task,User View Task,project.model_project_task,group_view_project,1,0,0,0
-task_type,Project task type,project.model_project_task_type,group_view_project,1,0,0,0
-project_type,Project task,project.model_project_tags,group_view_project,1,0,0,0
-account_analytic,Account analytic,project.model_account_analytic_account,group_view_project,1,0,0,0
 
-user_edit_project, User Edit Project,project.model_project_project,group_edit_project,1,1,1,0
-user_edit_task,User Edit Task,project.model_project_task,group_edit_project,1,1,1,0
-edit_task_type,Edit task type,project.model_project_task_type,group_edit_project,1,1,1,0
-edit_project_type,Edit project task,project.model_project_tags,group_edit_project,1,1,1,0
-account_analytic_edit,Account analytic edit,project.model_account_analytic_account,group_edit_project,1,1,1,0
+access_project_project,project.project,model_project_project,group_view_project,1,0,0,0
+access_account_analytic_account_user,account.analytic.account,analytic.model_account_analytic_account,group_view_project,1,0,0,0
+access_project_task_type_user,project.task.type.user,project.model_project_task_type,group_view_project,1,0,0,0
+access_project_task_type_project_user,project.task.type.project.user,project.model_project_task_type,group_view_project,1,0,0,0
+access_project_task,project.task,project.model_project_task,group_view_project,1,0,0,0
+access_partner_task user,base.res.partner user,base.model_res_partner,group_view_project,1,0,0,0
+access_task_on_partner,project.task on partners,project.model_project_task,group_view_project,1,0,0,0
+access_project_on_partner,project.project on partners,project.model_project_project,group_view_project,1,0,0,0
+access_resource_calendar,project.resource_calendar user,resource.model_resource_calendar,group_view_project,1,0,0,0
+access_resource_calendar_attendance,project.resource_calendar_attendance user,resource.model_resource_calendar_attendance,group_view_project,1,0,0,0
+access_resource_calendar_leaves_user,resource.calendar.leaves user,resource.model_resource_calendar_leaves,group_view_project,1,0,0,0
+access_project_tags_all,project.project_tags_all,project.model_project_tags,group_view_project,1,0,0,0
+access_project_issue,project.project_issue,project_issue.model_project_issue,group_view_project,1,0,0,0
+
