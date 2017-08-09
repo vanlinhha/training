@@ -7,9 +7,6 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='description']" position="after">
                     <field name="color"/>
-                    <template>
-                        <ul class="oe_kanban_colorpicker" data-field="color"/>
-                    </template>
                 </xpath>
             </field>
         </record>
