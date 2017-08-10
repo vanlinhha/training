@@ -4,7 +4,7 @@ from odoo import models, fields, api
 
 class change_kanban_color(models.Model):
     _inherit = "project.task.type"
-    color = fields.Integer(string="Color", store=True,help="Choose a color index, from 0 to 9")
+    color = fields.Integer(help="Choose your color", string="Color")
 
 class change_kanban(models.Model):
     _inherit = "project.task"
@@ -17,8 +17,3 @@ class change_kanban(models.Model):
             stage_id = item.stage_id.id
             if item.color == 0:
                 item.color = item.env['project.task.type'].search([('id', '=',stage_id)]).color
-
-
-
-
-

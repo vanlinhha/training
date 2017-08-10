@@ -1,40 +1,29 @@
 <odoo>
     <data>
+
+
         <record id="task_type_edit_inherit" model="ir.ui.view">
-            <field name="name">project.task.type.form.inherit</field>
-            <field name="model">project.task.type</field>
-            <field name="inherit_id" ref="project.task_type_edit"/>
+            <field name="name">project.task.inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_kanban"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='description']" position="after">
-                    <field name="color"/>
+                <xpath expr="//ul[@class='oe_kanban_colorpicker']" position="replace">
+
                 </xpath>
             </field>
         </record>
 
 
          <!-- Project Task Kanban View -->
-        <record model="ir.ui.view" id="project.view_task_kanban">
-            <field name="name">project.task.kanban</field>
-            <field name="model">project.task</field>
+        <record model="ir.ui.view" id="view_task_type_kanban">
+            <field name="name">project.task.type.kanban</field>
+            <field name="model">project.task.type</field>
             <field name="arch" type="xml">
                 <kanban class="o_kanban_small_column o_kanban_project_tasks" on_create="quick_create">
                     <field name="color"/>
-                    <field name="priority"/>
-                    <field name="stage_id" options='{"group_by_tooltip": {"description": "Stage Description", "legend_priority": "Use of stars"}}'/>
-                    <field name="user_id"/>
-                    <field name="user_email"/>
+                    <field name="name"/>
+                    <field name="fold"/>
                     <field name="description"/>
-                    <field name="sequence"/>
-                    <field name="remaining_hours" groups="project.group_time_work_estimation_tasks"/>
-                    <field name="date_deadline"/>
-                    <field name="message_needaction_counter"/>
-                    <field name="tag_ids"/>
-                    <field name="attachment_ids"/>
-                    <field name="displayed_image_id"/>
-                    <field name="active"/>
-                    <field name="legend_blocked"/>
-                    <field name="legend_normal"/>
-                    <field name="legend_done"/>
                     <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click">
@@ -44,39 +33,13 @@
                                     <span class="fa fa-bars fa-lg"/>
                                 </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <t t-if="widget.editable"><li><a type="set_cover">Set Cover Image</a></li></t>
-                                    <t t-if="widget.editable"><li><a type="edit">Edit Task</a></li></t>
-                                    <t t-if="widget.deletable"><li><a type="delete">Delete</a></li></t>
                                     <li><ul class="oe_kanban_colorpicker" data-field="color"/></li>
                                 </ul>
                             </div>
                             <div class="oe_kanban_content">
                                 <div>
-                                    <field name="tag_ids"/>
-                                </div>
-                                <div>
                                     <strong><field name="name"/></strong>
                                 </div>
-                                <div class="text-muted">
-                                    <field name="project_id" invisible="context.get('default_project_id', False)"/>
-                                    <t t-if="record.date_deadline.raw_value and record.date_deadline.raw_value lt (new Date())" t-set="red">oe_kanban_text_red</t>
-                                    <span t-attf-class="#{red || ''}"><i><field name="date_deadline"/></i></span>
-                                </div>
-                                <div class="oe_kanban_bottom_left">
-                                    <field name="priority" widget="priority"/>
-                                    <t t-if="record.message_needaction_counter.raw_value">
-                                        <span class='oe_kanban_mail_new' title='Unread Messages'><i class='fa fa-comments'/><t t-raw="record.message_needaction_counter.raw_value"/></span>
-                                    </t>
-                                </div>
-                                <div class="oe_kanban_bottom_right">
-                                    <img t-att-src="kanban_image('res.users', 'image_small', record.user_id.raw_value)" t-att-title="record.user_id.value" width="24" height="24" class="oe_kanban_avatar pull-right"/>
-                                    <div class="pull-left" groups="base.group_user">
-                                        <field name="kanban_state" widget="kanban_state_selection"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div t-if="record.displayed_image_id.value">
-                                <field name="displayed_image_id" widget="attachment_image"/>
                             </div>
                             <div class="oe_clear"></div>
                         </div>
@@ -85,6 +48,27 @@
                 </kanban>
             </field>
          </record>
+
+        <record id="open_task_type_form" model="ir.actions.act_window">
+            <field name="name">Stages</field>
+            <field name="res_model">project.task.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_id" ref="project.task_type_tree"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a stage in the task pipeline.
+              </p><p>
+                Define the steps that will be used in the project from the
+                creation of the task, up to the closing of the task or issue.
+                You will use these stages in order to track the progress in
+                solving a task or an issue.
+              </p>
+            </field>
+        </record>
+
+        <menuitem action="open_task_type_form" id="project.menu_project_config_project" name="Stages" parent="project.menu_project_config" sequence="3" groups="project.group_project_manager"/>
+
 
     </data>
 </odoo>
