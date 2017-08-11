@@ -13,6 +13,30 @@
             </field>
         </record>
 
+        <record id="task_type_form_inherit" model="ir.ui.view">
+            <field name="name">project.task.form.inherit</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_edit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='description']" position="after">
+                    <label for="legend_done" string=" 0 - #FFFFFF" class="oe_kanban_color_view oe_kanban_color_view_0 oe_project_kanban_legend"/>
+                    <label for="legend_done" string=" 1 - #d8d8d8" class="oe_kanban_color_view oe_kanban_color_view_1 oe_project_kanban_legend"/>
+                    <label for="legend_done" string=" 2 - #e5d8e3 " class="oe_kanban_color_view oe_kanban_color_view_2 oe_project_kanban_legend"/>
+                    <label for="legend_done" string=" 3 - #ece9c2" class="oe_kanban_color_view oe_kanban_color_view_3 oe_project_kanban_legend"/>
+                    <label for="legend_done" string=" 4 - #dee180" class="oe_kanban_color_view oe_kanban_color_view_4 oe_project_kanban_legend"/>
+                    <label for="legend_done" string=" 5 - #abd4cc" class="oe_kanban_color_view oe_kanban_color_view_5 oe_project_kanban_legend"/>
+                    <label for="legend_done" string=" 6 - #b8e3e8" class="oe_kanban_color_view oe_kanban_color_view_6 oe_project_kanban_legend"/>
+                    <label for="legend_done" string=" 7 - #f4ddab" class="oe_kanban_color_view oe_kanban_color_view_7 oe_project_kanban_legend"/>
+                    <label for="legend_done" string=" 8 - #7f637d" class="oe_kanban_color_view oe_kanban_color_view_8 oe_project_kanban_legend"/>
+                    <label for="legend_done" string=" 9 - #d8c5d5" class="oe_kanban_color_view oe_kanban_color_view_9 oe_project_kanban_legend"/>
+
+
+                    <field name="color" widget="selection"/>
+
+                </xpath>
+            </field>
+        </record>
+
 
          <!-- Project Task Kanban View -->
         <record model="ir.ui.view" id="view_task_type_kanban">
@@ -69,6 +93,13 @@
 
         <menuitem action="open_task_type_form" id="project.menu_project_config_project" name="Stages" parent="project.menu_project_config" sequence="3" groups="project.group_project_manager"/>
 
+
+
+        <template id="assets_backend123" name="change_kanban_color assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+		         <link rel="stylesheet" href="/change_kanban_color/static/src/css/custom.less"/>
+            </xpath>
+        </template>
 
     </data>
 </odoo>
