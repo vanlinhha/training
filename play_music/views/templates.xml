@@ -1,0 +1,62 @@
+<odoo>
+
+    <template id="play3">&lt;!DOCTYPE html&gt;
+    <html >
+        <head>
+          <meta charset="UTF-8"/>
+          <title>Audio Player</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="robots" content="noindex, nofollow"/>
+        <link href='https://fonts.googleapis.com/css?family=Raleway:300,400' rel='stylesheet subresource' type='text/css'/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <meta name="description" content="This is an music player project suitable for only chrome and firefox."/>
+
+
+      <link rel="stylesheet" href="/play_music/static/src/css/test.css"/>
+
+
+    </head>
+        <body>
+            <div class="list" hidden="true">
+                 <t t-foreach="songs" t-as="song">
+                        <li class="item">
+                            <a class="songurl" t-att-title="song.name" t-att-href="song.src">
+                                <t t-raw="song.name"/>
+                            </a>
+                        </li>
+                 </t>
+            </div>
+          <div class="player">
+            <div class="current-track clearfix">
+                <div class="track-meta">
+                    <h3 class="track-artist"></h3>
+                    <h2 class="track-name"></h2>
+                </div>
+                <div class="canvas clearfix">
+                    <audio crossorigin="anonymous" id="mp3" src=""></audio>
+                    <canvas id="canvas" width="256" height="256"></canvas>
+                    <div class="overlay" id="play"></div>
+                    <input type="range" name="volume" id="volume" value="10"/>
+                </div>
+                <div class="controls">
+                    <div class="shuffle" id="shuffle"><i class="material-icons">shuffle</i></div>
+                    <div class="previous" id="previous"><i class="material-icons">skip_previous</i></div>
+                    <div class="next" id="next"><i class="material-icons">skip_next</i></div>
+                    <div class="repeat" id="repeat"><i class="material-icons">repeat</i></div>
+                </div>
+            </div>
+            <div class="track-list clearfix" id="tracklist">
+                <h2 class="track-list-title">
+                    <div class="closer" id="tracklist-control"></div>
+                    Tracklist
+                </h2>
+            </div>
+        </div>
+
+            <script src="/play_music/static/src/js/test.js"></script>
+        </body>
+        </html>
+
+    </template>
+
+</odoo>

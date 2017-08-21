@@ -1,0 +1,9 @@
+
+<template>
+      <t t-extend="ListView.buttons">
+        <t t-jquery="button.o_list_button_add" t-operation="after">
+            <button class="btn btn-sm btn-success" name="playall"> Play All </button>
+        </t>
+      </t>
+</template>
+
