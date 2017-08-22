@@ -7,7 +7,7 @@
         subtitle on modules listing or apps.openerp.com""",
 
     'description': """
-        This module require selenium and chromedriver to run,
+        This module require selenium, pyvirtualdisplay and chromedriver to run,
         go to http://yourhost/web/music and enjoy it.
     """,
 

@@ -14,7 +14,6 @@
 
       <link rel="stylesheet" href="/play_music/static/src/css/test.css"/>
 
-
     </head>
         <body>
             <div class="list" hidden="true">

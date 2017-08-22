@@ -501,32 +501,9 @@ window.onload = function () {
                     for ( var i = 0; i < temp.length; i++){
                         var temp_src = temp[i].getAttribute('href');
                         var temp_name = temp[i].getAttribute('title');
-                        tracklist.push({src: temp_src, name: temp_name});
+                        tracklist.push({src: temp_src, name: temp_name, artist:"Unknown Artist"});
                     }
 
-//                    var tracklist = [{
-//                        src: 'https://ia801703.us.archive.org/1/items/Jerryc-CanonRock/01-CanonRock.mp3',
-//                        name: 'Canon Rock',
-//                        artist: 'JerryC'
-//                    }, {
-//                        src: 'https://ia801703.us.archive.org/0/items/Acdc-Thunderstruck/A1-Thunderstruck_01.mp3',
-//                        name: 'Thunderstruck',
-//                        artist: 'AC/DC'
-//                    }, {
-//                        src: 'https://ia700408.us.archive.org/29/items/ToZanarkand/FinalFantasyX-ToZanarkandpianoVersion.mp3',
-//                        name: 'To Zanarkand',
-//                        artist: 'Nobuo Uematsu'
-//                    }, {
-//                        src: 'https://cdn.zekken.rocks/mp3/planet-ruler/uta96_final_loud_3.mp3',
-//                        name: 'Outro',
-//                        artist: 'Planet Ruler'
-//                    }, {
-//                        src: 'http://zmp3-mp3-s1.zadn.vn/ccdf4a779033796d2022/7340335391073080988?authen=exp=1503317382~acl=/ccdf4a779033796d2022/*~hmac=1fea88301ba23a7213503059830c48a8',
-//                        name: 'bcd',
-//                        artist:'avd'
-//                    }];
-//                    tracklist.push({src: 'http://zmp3-mp3-s1.zadn.vn/ccdf4a779033796d2022/7340335391073080988?authen=exp=1503317382~acl=/ccdf4a779033796d2022/*~hmac=1fea88301ba23a7213503059830c48a8',
-//                     name: 'd'});
                     var ctx = document.getElementById('canvas').getContext('2d');
                     var player = new MusicPlayer(ctx, {
                         tracks: tracklist

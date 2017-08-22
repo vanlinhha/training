@@ -7,20 +7,22 @@ import datetime, time
 class PlayMusic(http.Controller):
     @http.route('/web/play_music/', auth='public', type="http")
     def index(self, **kw):
-        name = request.params.get('name')
-        song = request.env['playmusic'].search([('name', '=', name)])
+        song_id = request.params.get('id')
+        song = request.env['playmusic'].search([('id', '=', song_id)])
         temp = song.link
         now = time.mktime(datetime.datetime.now().timetuple())
-        if request.env['playmusic'].search([('name', '=', name)]).src:
-            exp = int(request.env['playmusic'].search([('name', '=', name)]).src.split('exp=')[1].split('~acl')[0])
+        if request.env['playmusic'].search([('id', '=', song_id)]).src:
+            exp = int(request.env['playmusic'].search([('id', '=', song_id)]).src.split('exp=')[1].split('~acl')[0])
         if song.src and now <= exp:
             src = song.src
         else:
             src = test.test().get_src(temp)
 
-        request.env['playmusic'].search([('name', '=', name)]).src = src
+        request.env['playmusic'].search([('id', '=', song_id)]).src = src
+        list = request.env['playmusic'].search([]) - request.env['playmusic'].search([('id', '=', song_id)])
+        list_data = request.env['playmusic'].search([('id', '=', song_id)]) + list
         vals = {
-            'songs': request.env['playmusic'].search([('name', '=', name)])
+            'songs': list_data
         }
         return request.render('play_music.play3', vals)
 

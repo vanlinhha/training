@@ -5,29 +5,25 @@
             <field name="name">play_music.playmusic.tree</field>
             <field name="model">playmusic</field>
             <field name="arch" type="xml">
-
                 <tree>
                     <button type="object" name="play" string="Play"/>
                     <field name="name"/>
                     <field name="link"/>
-                    <field name="src"/>
+                    <!--<field name="src"/>-->
                 </tree>
-
             </field>
         </record>
 
         <record model="ir.ui.view" id="song_form_view">
-            <field name="name">form</field>
             <field name="model">playmusic</field>
             <field name="view_type">form</field>
             <field name="arch" type="xml">
                 <form>
                     <button type="object" name="play" string="Play"></button>
                     <group>
-
                         <field name="name"/>
                         <field name="link"/>
-                        <field name="src"/>
+                        <!--<field name="src"/>-->
                     </group>
 
                 </form>
@@ -38,7 +34,6 @@
             <field name="name">Playlist</field>
             <field name="res_model">playmusic</field>
             <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="song_tree_view"/>
         </record>
 
         <menuitem id="playmusicmenu" name="Play music"/>
