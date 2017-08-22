@@ -20,7 +20,7 @@ class PlayMusic(models.Model):
         return {
             "type": "ir.actions.act_url",
             "url": "/web/play_music/?id=" + str(self.id),
-            "target": "new",
+            "target": "self",
         }
 
     def playall(self):
