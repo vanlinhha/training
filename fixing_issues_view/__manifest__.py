@@ -25,6 +25,7 @@
     # always loaded
     'data': [
         'views/views.xml',
+        'views/group.xml'
     ],
     'application':True
 }
