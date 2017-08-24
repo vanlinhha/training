@@ -313,7 +313,7 @@ var MusicPlayer = function () {
         return this;
     };
 
-    MusicPlayer.prototype.loadTrack = function loadTrack(autoplay) {
+    MusicPlayer.prototype.loadTrack = function loadTrack(autoplay=true) {
         this.audio.el.removeAttribute('src');
         this.audio.el.setAttribute('src', this.track.getAttribute('audio-src'));
         // this.audioSetup();
@@ -352,13 +352,14 @@ var MusicPlayer = function () {
             if (Player.shuffling) {
                 Player.shuffle();
             } else {
-                if (parseInt(Player.audio.el.getAttribute('track-number')) < Player.tracks.length) {
-                    Player.playNextTrack();
-                } else {
-                    if (Player.repeating) {
-                        Player.playNextTrack();
-                    }
-                }
+//                if (parseInt(Player.audio.el.getAttribute('track-number')) < Player.tracks.length) {
+//                    Player.playNextTrack();
+//                } else {
+//                    if (Player.repeating) {
+//                        Player.playNextTrack();
+//                    }
+//                }
+                Player.playNextTrack();
             }
         });
     };
