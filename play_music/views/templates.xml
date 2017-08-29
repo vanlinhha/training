@@ -85,12 +85,9 @@
                 <script type="text/javascript"
                         src="/play_music/static/src/examples/resources/js/foundation.min.js"></script>
 
-                <!-- Include Amplitude JS -->
-                <script type="text/javascript" src="/play_music/static/src/dist/amplitude.js"></script>
+                <script type="text/javascript" src="/play_music/static/src/examples/resources/js/amplitude.js"></script>
 
                 <!--
-                    Include UX functions JS
-
                     NOTE: These are for handling things outside of the scope of AmplitudeJS
                 -->
                 <script type="text/javascript" src="/play_music/static/src/examples/blue-playlist/js/functions.js"></script>
