@@ -20,7 +20,6 @@
             <field name="view_type">form</field>
             <field name="arch" type="xml">
                 <form>
-                    <button type="object" name="play" string="Play"></button>
                     <group>
                         <field name="link"/>
                         <field name="title"/>
