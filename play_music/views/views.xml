@@ -7,7 +7,6 @@
             <field name="arch" type="xml">
                 <tree>
                     <!--<button type="object" name="play" string="Play"/>-->
-                    <!--<field name="name"/>-->
                     <field name="title"/>
                     <field name="artist"/>
                     <field name="link"/>
