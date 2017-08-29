@@ -6,10 +6,11 @@
             <field name="model">playmusic</field>
             <field name="arch" type="xml">
                 <tree>
-                    <button type="object" name="play" string="Play"/>
-                    <field name="name"/>
+                    <!--<button type="object" name="play" string="Play"/>-->
+                    <!--<field name="name"/>-->
+                    <field name="title"/>
+                    <field name="artist"/>
                     <field name="link"/>
-                    <!--<field name="src"/>-->
                 </tree>
             </field>
         </record>
@@ -21,9 +22,10 @@
                 <form>
                     <button type="object" name="play" string="Play"></button>
                     <group>
-                        <field name="name"/>
                         <field name="link"/>
-                        <!--<field name="src"/>-->
+                        <field name="title"/>
+                        <field name="artist"/>
+                        <image src="thumbnail"/>
                     </group>
 
                 </form>

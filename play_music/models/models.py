@@ -1,19 +1,15 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
+import requests, json
 
 class PlayMusic(models.Model):
     _name = "playmusic"
-    link = fields.Char(string="Link Zing Mp3 of the song")
-    src = fields.Char(string="URL of the song", defeault="")
-    name = fields.Char(string="Name", compute="compute_name")
-
-    @api.multi
-    def compute_name(self):
-        for record in self:
-            if record.link:
-                record.name = record.link.split("bai-hat/")[1].split("/ZW")[0].replace("-", " ")
-            else:
-                record.name = " "
+    link = fields.Char(string="Zing Mp3, Nhaccuatui link")
+    url = fields.Char(string="URL of the song", defeault="")
+    # name = fields.Char(string="Name", compute="compute_name")
+    title = fields.Char(string="Title", readonly=True)
+    artist = fields.Char(string="Artist", readonly=True)
+    thumbnail = fields.Char(string="Thumbnail", readonly=True)
 
     @api.multi
     def play(self):
@@ -29,5 +25,4 @@ class PlayMusic(models.Model):
             "url": "/web/play_all",
             "target": "new"
         }
-
 

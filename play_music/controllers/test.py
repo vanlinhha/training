@@ -5,8 +5,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import *
 from pyvirtualdisplay import Display
-import os, time
+import os, time,json
 from odoo import models, fields, api
+import urllib2
+import requests
 class test():
     _name = "getsrc"
     def get_src(self, link):
@@ -22,8 +24,10 @@ class test():
         src = self.driver.find_element_by_tag_name("audio").get_attribute("src")
         self.display.stop()
         self.driver.quit()
+        os.system("pkill /im chromedriver.exe /f")
         print "Time spent: " + str(time.time() - start)
         return src
+
 
 
 

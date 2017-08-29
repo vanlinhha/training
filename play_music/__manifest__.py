@@ -7,8 +7,9 @@
         subtitle on modules listing or apps.openerp.com""",
 
     'description': """
-        This module require selenium, pyvirtualdisplay and chromedriver to run,
-        go to http://yourhost/web/music and enjoy it.
+        Go to http://yourhost/web/music to play 128kbps music.
+        http://yourhost/web/music/320 to play 320kbps music,and
+        http://yourhost/web/music/lossless to play lossless music.
     """,
 
     'author': "My Company",
@@ -25,7 +26,7 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
 
